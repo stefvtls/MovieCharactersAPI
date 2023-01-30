@@ -1,60 +1,55 @@
+-- Franchises
+INSERT INTO franchise ("name") VALUES ('The Lord of the Rings');
+INSERT INTO franchise ("name") VALUES ('Ghostbusters');
+
+
 -- Movies
-INSERT INTO movie ("title", "director", "release_year") VALUES ('The Lord of the Rings: The Fellowship of the Ring',
-                                                               'Peter Jackson', 2001);
+INSERT INTO movie ("title", "director", "release_year", "franchise_id") VALUES
+    ('The Lord of the Rings: The Fellowship of the Ring','Peter Jackson', 2001, 1);
+INSERT INTO movie ("title", "director", "release_year", "franchise_id") VALUES
+                ('The Lord of the Rings: The Two Towers','Peter Jackson', 2002, 1);
+INSERT INTO movie ("title", "director", "release_year", "franchise_id") VALUES
+    ('The Lord of the Rings: The Return of the King','Peter Jackson', 2003, 1);
+
+INSERT INTO movie ("title", "director", "release_year", "franchise_id") VALUES
+    ('Ghostbusters','Ivan Reitman', 1984, 2);
+INSERT INTO movie ("title", "director", "release_year", "franchise_id") VALUES
+    ('Ghostbusters II','Ivan Reitman', 1989, 2);
+INSERT INTO movie ("title", "director", "release_year", "franchise_id") VALUES
+    ('Ghostbusters: Answer the Call','Paul Feig', 2016, 2);
+
 
 -- Characters
 INSERT INTO character ("name") VALUES ('Frodo Baggins');
+INSERT INTO character ("name") VALUES ('Gandalf');
+INSERT INTO character ("name") VALUES ('Aragorn');
 
--- Franchises
-INSERT INTO franchise ("name") VALUES ('The Lord of the Rings');
+INSERT INTO character ("name") VALUES ('Dr. Peter Venkman');
+INSERT INTO character ("name") VALUES ('Dr. Raymond Stantz');
+INSERT INTO character ("name") VALUES ('Dr. Egon Spengler');
+
 
 -- Characters in movie
-INSERT INTO character_movies (characters_id, movies_id) VALUES (1,1);
+INSERT INTO movie_characters (movies_id, characters_id) VALUES (1,1);
+INSERT INTO movie_characters (movies_id, characters_id) VALUES (1,2);
+INSERT INTO movie_characters (movies_id, characters_id) VALUES (1,3);
 
--- -- Movies in franchise
--- INSERT INTO franchise_movies (franchise_id, movies_id) VALUES (1,1);
+INSERT INTO movie_characters (movies_id, characters_id) VALUES (2,1);
+INSERT INTO movie_characters (movies_id, characters_id) VALUES (2,2);
+INSERT INTO movie_characters (movies_id, characters_id) VALUES (2,3);
 
+INSERT INTO movie_characters (movies_id, characters_id) VALUES (3,1);
+INSERT INTO movie_characters (movies_id, characters_id) VALUES (3,2);
+INSERT INTO movie_characters (movies_id, characters_id) VALUES (3,3);
 
+INSERT INTO movie_characters (movies_id, characters_id) VALUES (4,4);
+INSERT INTO movie_characters (movies_id, characters_id) VALUES (4,5);
+INSERT INTO movie_characters (movies_id, characters_id) VALUES (4,6);
 
+INSERT INTO movie_characters (movies_id, characters_id) VALUES (5,4);
+INSERT INTO movie_characters (movies_id, characters_id) VALUES (5,5);
+INSERT INTO movie_characters (movies_id, characters_id) VALUES (5,6);
 
--- -- Professors
--- INSERT INTO professor ("name") VALUES ('William Fences'); -- 1
--- INSERT INTO professor ("name") VALUES ('Arvid Strøm'); -- 2
--- INSERT INTO professor ("name") VALUES ('Anne Hansen'); -- 3
--- INSERT INTO professor ("name") VALUES ('Liv Larsen'); -- 4
--- -- Students
--- INSERT INTO student ("name", professor_id) VALUES ('Ola Nordmann', 1); -- 1
--- INSERT INTO student ("name", professor_id) VALUES ('Emma Hansen', 1); -- 2
--- INSERT INTO student ("name", professor_id) VALUES ('Olivia Nordmann', 2); -- 3
--- INSERT INTO student ("name", professor_id) VALUES ('Lucas Olsen', 2); -- 4
--- INSERT INTO student ("name", professor_id) VALUES ('Askel Nilsen', 3); -- 5
--- INSERT INTO student ("name", professor_id) VALUES ('Frida Kristiansen', 3); -- 6
--- INSERT INTO student ("name", professor_id) VALUES ('Ingrid Johansen', 3); -- 7
--- INSERT INTO student ("name", professor_id) VALUES ('Jakob Andersen', 3); -- 8
--- -- Projects
--- INSERT INTO project (title, student_id) VALUES ('Automating your life in 3 easy steps', 1); -- 1
--- INSERT INTO project (title, student_id) VALUES ('How to build a technology empire', 2); -- 2
--- INSERT INTO project (title, student_id) VALUES ('Powering the new age', 3); -- 3
--- INSERT INTO project (title, student_id) VALUES ('Predicting the weather on Mars', 5); -- 4
--- INSERT INTO project (title, student_id) VALUES ('Classifying Deep Learning classifiers', 7); -- 5
--- INSERT INTO project (title, student_id) VALUES ('Can we make safe bets? An analysis of card counting', 8); -- 6
---
--- -- Subjects
--- INSERT INTO subject (code, title, professor_id) VALUES ('ONT4001', 'Advanced Programming', 1); -- 1
--- INSERT INTO subject (code, title, professor_id) VALUES ('UIX3000', 'User Experience Design', 2); -- 2
--- INSERT INTO subject (code, title, professor_id) VALUES ('DATA4002', 'Big Data in Practice', 3); -- 3
--- INSERT INTO subject (code, title, professor_id) VALUES ('ALM3000', 'Applied Machine Learning', 3); -- 4
--- -- Students in subject
--- INSERT INTO student_subject (student_id, subject_id) VALUES (1,1);
--- INSERT INTO student_subject (student_id, subject_id) VALUES (2,1);
--- INSERT INTO student_subject (student_id, subject_id) VALUES (1,2);
--- INSERT INTO student_subject (student_id, subject_id) VALUES (2,2);
--- INSERT INTO student_subject (student_id, subject_id) VALUES (3,2);
--- INSERT INTO student_subject (student_id, subject_id) VALUES (5,3);
--- INSERT INTO student_subject (student_id, subject_id) VALUES (6,3);
--- INSERT INTO student_subject (student_id, subject_id) VALUES (7,3);
--- INSERT INTO student_subject (student_id, subject_id) VALUES (8,3);
--- INSERT INTO student_subject (student_id, subject_id) VALUES (5,4);
--- INSERT INTO student_subject (student_id, subject_id) VALUES (6,4);
--- INSERT INTO student_subject (student_id, subject_id) VALUES (7,4);
--- INSERT INTO student_subject (student_id, subject_id) VALUES (8,4);
+INSERT INTO movie_characters (movies_id, characters_id) VALUES (6,4);
+INSERT INTO movie_characters (movies_id, characters_id) VALUES (6,5);
+INSERT INTO movie_characters (movies_id, characters_id) VALUES (6,6);
