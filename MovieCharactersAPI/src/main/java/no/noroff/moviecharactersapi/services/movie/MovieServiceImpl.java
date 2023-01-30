@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 public class MovieServiceImpl implements MovieService {
@@ -26,6 +28,18 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public Collection<Character> getCharacters(int movieId) {
         return movieRepository.findById(movieId).get().getCharacters();
+    }
+
+    @Override
+    public void updateCharacters(int movieId, int[] characters) {
+        Movie movie = movieRepository.findById(movieId).get();
+        Set<Character> characterList = new HashSet<>();
+
+        for (int id: characters) {
+            characterList.add(characterRepository.findById(id).get());
+        }
+        movie.setCharacters(characterList);
+        movieRepository.save(movie);
     }
 
     @Override

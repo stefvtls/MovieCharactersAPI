@@ -10,5 +10,6 @@ import java.util.Collection;
 
 public interface MovieService extends CrudService<Movie, Integer> {
     Collection<Character> getCharacters(int movieId);
+    void updateCharacters(int movieId, int[] characters);
 
 }
