@@ -2,6 +2,7 @@ package no.noroff.moviecharactersapi.services.movie;
 
 import jakarta.transaction.Transactional;
 import no.noroff.moviecharactersapi.models.Character;
+import no.noroff.moviecharactersapi.models.Franchise;
 import no.noroff.moviecharactersapi.models.Movie;
 import no.noroff.moviecharactersapi.repositories.CharacterRepository;
 import no.noroff.moviecharactersapi.repositories.MovieRepository;
@@ -26,6 +27,11 @@ public class MovieServiceImpl implements MovieService {
 
 
     @Override
+    public Franchise getFranchise(int movieId) {
+        return movieRepository.findById(movieId).get().getFranchise();
+    }
+
+    @Override
     public Collection<Character> getCharacters(int movieId) {
         return movieRepository.findById(movieId).get().getCharacters();
     }
@@ -41,6 +47,7 @@ public class MovieServiceImpl implements MovieService {
         movie.setCharacters(characterList);
         movieRepository.save(movie);
     }
+
 
     @Override
     public Movie findById(Integer id) {
@@ -64,9 +71,17 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public void deleteById(Integer integer) {
-
+    public void deleteById(Integer movieId) {
+        if(movieRepository.existsById(movieId)) {
+            Movie mov = movieRepository.findById(movieId).get();
+//            mov.getFranchise().setMovie(null);
+//            mov.getCharacters().forEach(c -> c.setMovie(null));
+            movieRepository.delete(mov);
+        }
+        else
+            logger.warn("No movie exists with ID: " + movieId);
     }
+
 
     @Override
     public void delete(Movie entity) {
