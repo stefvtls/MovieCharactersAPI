@@ -19,5 +19,6 @@ public interface FranchiseRepository extends JpaRepository<Franchise, Integer> {
             "WHERE franchise.id = ?;", nativeQuery = true)
     Set<Integer> getAllCharacterIdsInFranchise(int franchiseId);
 
+
 }
 
