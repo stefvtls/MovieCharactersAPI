@@ -19,6 +19,6 @@ public class AppRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         //movieService.findById(1).toString();
-        System.out.println(movieService.getCharacters(1));
+        movieService.getCharacters(1).forEach(character -> System.out.println(character.getName()));
     }
 }

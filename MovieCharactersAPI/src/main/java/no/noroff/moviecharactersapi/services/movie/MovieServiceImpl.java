@@ -2,6 +2,7 @@ package no.noroff.moviecharactersapi.services.movie;
 
 import jakarta.transaction.Transactional;
 import no.noroff.moviecharactersapi.models.Character;
+import no.noroff.moviecharactersapi.models.Franchise;
 import no.noroff.moviecharactersapi.models.Movie;
 import no.noroff.moviecharactersapi.repositories.CharacterRepository;
 import no.noroff.moviecharactersapi.repositories.MovieRepository;
@@ -10,6 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 public class MovieServiceImpl implements MovieService {
@@ -24,9 +27,27 @@ public class MovieServiceImpl implements MovieService {
 
 
     @Override
+    public Franchise getFranchise(int movieId) {
+        return movieRepository.findById(movieId).get().getFranchise();
+    }
+
+    @Override
     public Collection<Character> getCharacters(int movieId) {
         return movieRepository.findById(movieId).get().getCharacters();
     }
+
+    @Override
+    public void updateCharacters(int movieId, int[] characters) {
+        Movie movie = movieRepository.findById(movieId).get();
+        Set<Character> characterList = new HashSet<>();
+
+        for (int id: characters) {
+            characterList.add(characterRepository.findById(id).get());
+        }
+        movie.setCharacters(characterList);
+        movieRepository.save(movie);
+    }
+
 
     @Override
     public Movie findById(Integer id) {
@@ -50,9 +71,17 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public void deleteById(Integer integer) {
-
+    public void deleteById(Integer movieId) {
+        if(movieRepository.existsById(movieId)) {
+            Movie mov = movieRepository.findById(movieId).get();
+//            mov.getFranchise().setMovie(null);
+//            mov.getCharacters().forEach(c -> c.setMovie(null));
+            movieRepository.delete(mov);
+        }
+        else
+            logger.warn("No movie exists with ID: " + movieId);
     }
+
 
     @Override
     public void delete(Movie entity) {
