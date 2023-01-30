@@ -23,7 +23,7 @@ public class Runner implements ApplicationRunner {
     }
 
 
-    @Transactional
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
@@ -33,10 +33,10 @@ public class Runner implements ApplicationRunner {
 //        franchiseServiceImpl.getAllCharactersInFranchise(1).forEach(s -> System.out.println(s.getName()));
 //        System.out.println(franchiseServiceImpl.getAllMoviesInFranchise(1));
 //        franchiseServiceImpl.getAllMoviesInFranchise(1).forEach(s-> System.out.println(s.getTitle()));
-
 //        franchiseServiceImpl.deleteById(2);
 //        Franchise fr = franchiseServiceImpl.findById(1);
 //        franchiseServiceImpl.delete(fr);
+//        franchiseServiceImpl.updateMoviesInFranchise(1, new int[]{4});
 
 
     }
