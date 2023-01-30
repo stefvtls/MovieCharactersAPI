@@ -57,25 +57,23 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public Collection<Movie> findAll() {
-        return null;
+        return movieRepository.findAll();
     }
 
     @Override
     public Movie add(Movie entity) {
-        return null;
+        return movieRepository.save(entity);
     }
 
     @Override
     public Movie update(Movie entity) {
-        return null;
+        return movieRepository.save(entity);
     }
 
     @Override
     public void deleteById(Integer movieId) {
         if(movieRepository.existsById(movieId)) {
             Movie mov = movieRepository.findById(movieId).get();
-//            mov.getFranchise().setMovie(null);
-//            mov.getCharacters().forEach(c -> c.setMovie(null));
             movieRepository.delete(mov);
         }
         else
@@ -85,6 +83,7 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public void delete(Movie entity) {
-
+        int movieId = entity.getId();
+        deleteById(movieId);
     }
 }
