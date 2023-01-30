@@ -55,7 +55,7 @@ public class FranchiseServiceImpl implements FranchiseService{
         if(franchiseRepository.existsById(franchiseId)) {
             Franchise franchise = franchiseRepository.findById(franchiseId).get();
             franchise.getMovies().forEach(m -> m.setFranchise(null));
-            franchise.getMovies().forEach(m -> movieRepository.save(m));
+//            franchise.getMovies().forEach(m -> movieRepository.save(m));
             franchiseRepository.deleteById(franchiseId);
         }
         else
@@ -84,6 +84,14 @@ public class FranchiseServiceImpl implements FranchiseService{
             }
         }
         return charactersInFranchise;
+    }
+
+    @Override
+    public void updateMoviesInFranchise(int franchiseId, int[] moviesIds) {
+
+        Franchise franchise = franchiseRepository.findById(franchiseId).get();
+
+        
     }
 
 }
