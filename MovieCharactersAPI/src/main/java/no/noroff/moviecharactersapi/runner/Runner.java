@@ -36,6 +36,6 @@ public class Runner implements ApplicationRunner {
 //        franchiseServiceImpl.getAllMoviesInFranchise(1).forEach(s-> System.out.println(s.getTitle()));
 //        franchiseServiceImpl.deleteById(2);
 
-        characterServiceImpl.deleteById(1);
+//        characterServiceImpl.deleteById(1);
     }
 }
