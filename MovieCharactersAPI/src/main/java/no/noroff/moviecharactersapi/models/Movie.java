@@ -39,7 +39,7 @@ public class Movie {
     @JoinColumn
     private Franchise franchise;
 
-    @JsonGetter("franchise")
+    @JsonGetter("franchise") //make blank for dto for now?
     public Integer franchiseGetter() {
         if(franchise == null)
             return null;
@@ -50,10 +50,10 @@ public class Movie {
     @ManyToMany
     private Set<Character> characters;
 
-    @JsonGetter("characters")
-    public List<Integer> charactersGetter() {
-        if(characters == null)
-            return null;
-        return characters.stream().map(c -> c.getId()).collect(Collectors.toList());
-    }
+//    @JsonGetter("characters") //make blank for dto for now?
+//    public List<Integer> charactersGetter() {
+//        if(characters == null)
+//            return null;
+//        return characters.stream().map(c -> c.getId()).collect(Collectors.toList());
+//    }
 }
