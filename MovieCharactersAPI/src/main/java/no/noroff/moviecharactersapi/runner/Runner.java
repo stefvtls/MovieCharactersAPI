@@ -24,7 +24,7 @@ public class Runner implements ApplicationRunner {
     }
 
 
-    @Transactional
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
@@ -34,16 +34,8 @@ public class Runner implements ApplicationRunner {
 //        franchiseServiceImpl.getAllCharactersInFranchise(1).forEach(s -> System.out.println(s.getName()));
 //        System.out.println(franchiseServiceImpl.getAllMoviesInFranchise(1));
 //        franchiseServiceImpl.getAllMoviesInFranchise(1).forEach(s-> System.out.println(s.getTitle()));
-
 //        franchiseServiceImpl.deleteById(2);
-//        franchiseServiceImpl.delete(franchiseServiceImpl.findById(1));
 
         characterServiceImpl.deleteById(1);
-
-
-
-
-
-
     }
 }

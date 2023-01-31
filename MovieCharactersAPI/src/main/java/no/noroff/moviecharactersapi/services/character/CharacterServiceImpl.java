@@ -1,6 +1,8 @@
 package no.noroff.moviecharactersapi.services.character;
 
 import no.noroff.moviecharactersapi.models.Character;
+
+import no.noroff.moviecharactersapi.models.Franchise;
 import no.noroff.moviecharactersapi.repositories.CharacterRepository;
 import no.noroff.moviecharactersapi.repositories.MovieRepository;
 import org.slf4j.Logger;
@@ -8,10 +10,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-
+import java.util.Set;
 
 @Service
-public class CharacterServiceImpl implements CharacterSevice {
+public class CharacterServiceImpl implements CharacterService{
 
     private final Logger logger = LoggerFactory.getLogger(CharacterServiceImpl.class);
     private final CharacterRepository characterRepository;
@@ -23,9 +25,11 @@ public class CharacterServiceImpl implements CharacterSevice {
     }
 
     @Override
+
     public Character findById(Integer characterId) {
         return characterRepository.findById(characterId).get();
     }
+
 
     @Override
     public Collection<Character> findAll() {
@@ -33,6 +37,7 @@ public class CharacterServiceImpl implements CharacterSevice {
     }
 
     @Override
+
     public Character add(Character entity) {
         return characterRepository.save(entity);
     }
@@ -52,6 +57,7 @@ public class CharacterServiceImpl implements CharacterSevice {
         } else {
             logger.warn("No character exists with ID: " + characterId);
         }
+
     }
 
     @Override

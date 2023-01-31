@@ -12,12 +12,12 @@ import java.util.Set;
 public interface FranchiseRepository extends JpaRepository<Franchise, Integer> {
 
 
-    @Query(value = "SELECT character.id FROM FRANCHISE\n" +
-            "JOIN movie ON movie.franchise_id = franchise.id\n" +
-            "JOIN movie_characters ON movie_characters.movies_id = movie.id\n" +
-            "JOIN character ON movie_characters.characters_id = character.id\n" +
-            "WHERE franchise.id = ?;", nativeQuery = true)
-    Set<Integer> getAllCharacterIdsInFranchise(int franchiseId);
+//    @Query(value = "SELECT character.id FROM FRANCHISE\n" +
+//            "JOIN movie ON movie.franchise_id = franchise.id\n" +
+//            "JOIN movie_characters ON movie_characters.movies_id = movie.id\n" +
+//            "JOIN character ON movie_characters.characters_id = character.id\n" +
+//            "WHERE franchise.id = ?;", nativeQuery = true)
+//    Set<Integer> getAllCharacterIdsInFranchise(int franchiseId);
 
 
 }
