@@ -55,15 +55,15 @@ public class FranchiseServiceImpl implements FranchiseService {
             Franchise franchise = franchiseRepository.findById(franchiseId).get();
             franchise.getMovies().forEach(m -> m.setFranchise(null));
             franchise.getMovies().forEach(m -> movieRepository.save(m));
-            franchiseRepository.deleteById(franchiseId);
-        } else
+            franchiseRepository.delete(franchise);
+        }
+        else
             logger.warn("No franchise exists with ID: " + franchiseId);
     }
 
     @Override
     public void delete(Franchise entity) {
-        int franchiseId = entity.getId();
-        deleteById(franchiseId);
+        deleteById(entity.getId());
     }
 
 
