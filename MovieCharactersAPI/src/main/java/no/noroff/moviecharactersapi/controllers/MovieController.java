@@ -46,8 +46,13 @@ public class MovieController {
         return ResponseEntity.noContent().build();
     }
 
+    @DeleteMapping // DELETE: localhost:8080/api/v1/movies
+    public ResponseEntity delete(@RequestBody Movie movie) {
+        movieService.deleteById(movie.getId());
+        return ResponseEntity.noContent().build();
+    }
     @DeleteMapping("{id}") // DELETE: localhost:8080/api/v1/movies/1
-    public ResponseEntity delete(@PathVariable int id) {
+    public ResponseEntity deleteById(@PathVariable int id) {
         movieService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
