@@ -1,10 +1,13 @@
 package no.noroff.moviecharactersapi.models;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Getter
@@ -33,7 +36,12 @@ public class Character {
 
     @ManyToMany(mappedBy="characters")
     private Set<Movie> movies;
-
+    @JsonGetter("movies")
+    public List<Integer> moviesGetter() {
+        if(movies == null)
+            return null;
+        return movies.stream().map(m -> m.getId()).collect(Collectors.toList());
+    }
 
 
 
