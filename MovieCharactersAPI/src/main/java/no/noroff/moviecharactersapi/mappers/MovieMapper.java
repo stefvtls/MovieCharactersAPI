@@ -2,7 +2,9 @@ package no.noroff.moviecharactersapi.mappers;
 
 import no.noroff.moviecharactersapi.models.Character;
 import no.noroff.moviecharactersapi.models.Movie;
-import no.noroff.moviecharactersapi.models.dto.movie.*;
+import no.noroff.moviecharactersapi.models.dtos.MovieDTOs.MovieDTO;
+import no.noroff.moviecharactersapi.models.dtos.MovieDTOs.MoviePostDTO;
+import no.noroff.moviecharactersapi.models.dtos.MovieDTOs.MoviePutDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;

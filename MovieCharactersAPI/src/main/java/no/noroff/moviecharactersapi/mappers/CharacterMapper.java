@@ -2,10 +2,9 @@ package no.noroff.moviecharactersapi.mappers;
 
 
 import no.noroff.moviecharactersapi.models.Character;
-import no.noroff.moviecharactersapi.models.dto.character.CharacterSimpleDTO;
+import no.noroff.moviecharactersapi.models.dtos.characterDTOs.CharacterSimpleDTO;
 import no.noroff.moviecharactersapi.models.dtos.characterDTOs.CharacterDtoGetSimple;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 import java.util.Collection;
 

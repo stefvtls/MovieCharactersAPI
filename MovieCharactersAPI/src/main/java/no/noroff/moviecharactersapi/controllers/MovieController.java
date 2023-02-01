@@ -10,7 +10,11 @@ import no.noroff.moviecharactersapi.mappers.CharacterMapper;
 import no.noroff.moviecharactersapi.mappers.MovieMapper;
 import no.noroff.moviecharactersapi.models.Character;
 import no.noroff.moviecharactersapi.models.Movie;
-import no.noroff.moviecharactersapi.models.dto.movie.*;
+import no.noroff.moviecharactersapi.models.dtos.MovieDTOs.MovieDTO;
+import no.noroff.moviecharactersapi.models.dtos.MovieDTOs.MovieDtoGetSimple;
+import no.noroff.moviecharactersapi.models.dtos.MovieDTOs.MoviePostDTO;
+import no.noroff.moviecharactersapi.models.dtos.MovieDTOs.MoviePutDTO;
+import no.noroff.moviecharactersapi.models.dtos.characterDTOs.CharacterDtoGetSimple;
 import no.noroff.moviecharactersapi.services.movie.MovieService;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
@@ -180,7 +184,7 @@ public class MovieController {
                     description = "Success",
                     content = {@Content(
                             mediaType = "application/json",
-                            array = @ArraySchema(schema = @Schema(implementation = Character.class)))
+                            array = @ArraySchema(schema = @Schema(implementation = CharacterDtoGetSimple.class)))
                     }),
             @ApiResponse(responseCode = "400",
                     description = "Bad Request",

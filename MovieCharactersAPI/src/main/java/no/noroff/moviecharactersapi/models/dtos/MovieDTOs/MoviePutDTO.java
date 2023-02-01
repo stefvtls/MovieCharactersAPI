@@ -1,4 +1,4 @@
-package no.noroff.moviecharactersapi.models.dto.movie;
+package no.noroff.moviecharactersapi.models.dtos.MovieDTOs;
 
 import lombok.Getter;
 import lombok.Setter;
