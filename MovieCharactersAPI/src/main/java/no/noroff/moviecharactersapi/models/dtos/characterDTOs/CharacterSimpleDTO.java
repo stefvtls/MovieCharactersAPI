@@ -7,5 +7,4 @@ import lombok.Setter;
 @Setter
 public class CharacterSimpleDTO {
     private int id;
-    private String name;
 }

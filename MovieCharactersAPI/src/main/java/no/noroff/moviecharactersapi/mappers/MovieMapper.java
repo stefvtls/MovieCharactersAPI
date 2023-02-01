@@ -20,6 +20,7 @@ import no.noroff.moviecharactersapi.models.dtos.MovieDTOs.MovieDtoGetSimple;
 public interface MovieMapper {
 
     Movie moviePostDtoToMovie(MoviePostDTO moviePostDto);
+
     Movie moviePutDtoToMovie(MoviePutDTO moviePutDto);
 
 //    Movie movieDeleteDtoToMovie(MovieDeleteDTO movieDeleteDTO);
