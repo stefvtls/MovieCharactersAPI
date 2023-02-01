@@ -3,6 +3,7 @@ package no.noroff.moviecharactersapi.mappers;
 import no.noroff.moviecharactersapi.models.Franchise;
 import no.noroff.moviecharactersapi.models.Movie;
 import no.noroff.moviecharactersapi.models.dtos.franchiseDTOs.FranchiseDtoGet;
+import no.noroff.moviecharactersapi.models.dtos.franchiseDTOs.FranchiseDtoGetSimple;
 import no.noroff.moviecharactersapi.models.dtos.franchiseDTOs.FranchiseDtoPost;
 import no.noroff.moviecharactersapi.models.dtos.franchiseDTOs.FranchiseDtoPut;
 import org.mapstruct.Mapper;
@@ -16,7 +17,7 @@ import java.util.stream.Collectors;
 @Mapper(componentModel = "spring")
 public interface FranchiseMapper {
 
-
+    // GET DTO
     @Mapping(target="movies", qualifiedByName = "mapMoviesToIntegers")
     FranchiseDtoGet franchiseToFranchiseDto(Franchise franchise);
 
@@ -26,7 +27,10 @@ public interface FranchiseMapper {
 
 
 
+    // POST DTO
     Franchise franchiseDtoTofranchise(FranchiseDtoPost franchiseDtoPost);
+
+    // PUT DTO
     Franchise franchiseDtoTofranchise(FranchiseDtoPut franchiseDtoPut);
 
 
