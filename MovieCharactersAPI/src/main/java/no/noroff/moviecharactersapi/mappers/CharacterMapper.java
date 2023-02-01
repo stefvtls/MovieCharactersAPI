@@ -6,6 +6,8 @@ import no.noroff.moviecharactersapi.models.Character;
 import no.noroff.moviecharactersapi.models.Movie;
 import no.noroff.moviecharactersapi.models.dtos.characterDTOs.CharacterDtoGet;
 import no.noroff.moviecharactersapi.models.dtos.characterDTOs.CharacterDtoGetSimple;
+import no.noroff.moviecharactersapi.models.dtos.characterDTOs.CharacterDtoPost;
+import no.noroff.moviecharactersapi.models.dtos.characterDTOs.CharacterDtoPut;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
@@ -37,12 +39,11 @@ public interface CharacterMapper {
         return movies.stream().map(Movie::getId).collect(Collectors.toSet());
     }
 
-
     // POST DTO
-
-
+    Character characterDtoPostToCharacter(CharacterDtoPost characterDtoPost);
 
     // PUT DTO
+    Character characterDtoPutToCharacter(CharacterDtoPut characterDtoPut);
 
 
 
