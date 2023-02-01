@@ -27,7 +27,6 @@ public class Movie {
 
     private int releaseYear;
 
-    //@Column(length = 50, nullable = false)
     @Column(length = 50)
     private String director;
 
@@ -40,17 +39,17 @@ public class Movie {
     @JoinColumn
     private Franchise franchise;
 
-    @JsonGetter("franchise")
-    public Integer franchiseGetter() {
-        if(franchise == null)
-            return null;
-        return franchise.getId();
-    }
+//    @JsonGetter("franchise")
+//    public Integer franchiseGetter() {
+//        if(franchise == null)
+//            return null;
+//        return franchise.getId();
+//    }
 
 
     @ManyToMany
     private Set<Character> characters;
-//
+
 //    @JsonGetter("characters")
 //    public List<Integer> charactersGetter() {
 //        if(characters == null)

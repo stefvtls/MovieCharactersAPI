@@ -11,6 +11,9 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import no.noroff.moviecharactersapi.models.dtos.MovieDTOs.MovieDtoGetSimple;
+
+
 @Mapper(componentModel = "spring")
 public interface MovieMapper {
 
@@ -31,6 +34,8 @@ public interface MovieMapper {
             return null;
         return value.stream().map(c -> c.getId()).collect(Collectors.toSet());
     }
+
+    MovieDtoGetSimple movieToMovieDtoSimple(Movie movie);
 
 
 }

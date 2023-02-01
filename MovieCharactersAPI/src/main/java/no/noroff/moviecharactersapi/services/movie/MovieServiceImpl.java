@@ -1,9 +1,10 @@
 package no.noroff.moviecharactersapi.services.movie;
 
-import jakarta.transaction.Transactional;
+
 import no.noroff.moviecharactersapi.exceptions.CharacterNotFoundException;
 import no.noroff.moviecharactersapi.exceptions.FranchiseNotFoundException;
 import no.noroff.moviecharactersapi.exceptions.MovieNotFoundException;
+
 import no.noroff.moviecharactersapi.models.Character;
 import no.noroff.moviecharactersapi.models.Franchise;
 import no.noroff.moviecharactersapi.models.Movie;
@@ -83,10 +84,4 @@ public class MovieServiceImpl implements MovieService {
             movieRepository.delete(mov);
     }
 
-//
-//    @Override
-//    public void delete(Movie entity) {
-//        int movieId = entity.getId();
-//        deleteById(movieId);
-//    }
 }
