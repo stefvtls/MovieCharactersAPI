@@ -11,7 +11,6 @@ import no.noroff.moviecharactersapi.mappers.FranchiseMapper;
 import no.noroff.moviecharactersapi.mappers.MovieMapper;
 import no.noroff.moviecharactersapi.models.Character;
 import no.noroff.moviecharactersapi.models.Franchise;
-import no.noroff.moviecharactersapi.models.Movie;
 import no.noroff.moviecharactersapi.models.dtos.MovieDTOs.MovieDtoGetSimple;
 import no.noroff.moviecharactersapi.models.dtos.characterDTOs.CharacterDtoGetSimple;
 import no.noroff.moviecharactersapi.models.dtos.franchiseDTOs.FranchiseDtoGet;
@@ -224,8 +223,8 @@ public class FranchiseController {
                     )
             )
     })
-    public ResponseEntity<Set<Movie>> getAllMoviesForFranchise(@PathVariable int id) {
-        return ResponseEntity.ok(franchiseService.getAllMoviesInFranchise(id));
+    public ResponseEntity getAllMoviesForFranchise(@PathVariable int id) {
+        return ResponseEntity.ok(movieMapper.movieToMovieDtoSimple(franchiseService.getAllMoviesInFranchise(id)));
     }
 
 
@@ -289,8 +288,8 @@ public class FranchiseController {
             )
     }
     )
-    public ResponseEntity<Set<Character>> getAllCharactersForFranchise(@PathVariable int id) {
-        return ResponseEntity.ok(franchiseService.getAllCharactersInFranchise(id));
+    public ResponseEntity getAllCharactersForFranchise(@PathVariable int id) {
+        return ResponseEntity.ok(characterMapper.characterToCharacterDtoSimple(franchiseService.getAllCharactersInFranchise(id)));
     }
 
 
