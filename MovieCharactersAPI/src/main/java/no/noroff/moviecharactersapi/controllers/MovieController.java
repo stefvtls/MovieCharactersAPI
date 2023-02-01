@@ -42,7 +42,7 @@ public class MovieController {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Success",
+                    description = "Ok. Success",
                     content = {
                             @Content(mediaType = "application/json",
                                     array = @ArraySchema(schema = @Schema(implementation = MovieDTO.class)))
@@ -66,7 +66,7 @@ public class MovieController {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Success",
+                    description = "Ok. Success",
                     content = {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = MovieDTO.class))
@@ -118,7 +118,7 @@ public class MovieController {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "204",
-                    description = "Success",
+                    description = "No content. Success",
                     content = @Content
             ),
             @ApiResponse(
@@ -152,7 +152,7 @@ public class MovieController {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "204",
-                    description = "Success",
+                    description = "No content. Success",
                     content = @Content
             ),
             @ApiResponse(
@@ -181,7 +181,7 @@ public class MovieController {
     @Operation(summary = "Gets all characters in a movie with given movie ID ")
     @ApiResponses( value = {
             @ApiResponse(responseCode = "200",
-                    description = "Success",
+                    description = "Ok. Success",
                     content = {@Content(
                             mediaType = "application/json",
                             array = @ArraySchema(schema = @Schema(implementation = CharacterDtoGetSimple.class)))
@@ -210,7 +210,7 @@ public class MovieController {
     @Operation(summary = "Updates the characters in a movie with given movie ID by supplying a list of character IDs")
     @ApiResponses( value = {
             @ApiResponse(responseCode = "204",
-                    description = "Success",
+                    description = "No content. Success",
                     content = @Content
                     ),
             @ApiResponse(responseCode = "400",
