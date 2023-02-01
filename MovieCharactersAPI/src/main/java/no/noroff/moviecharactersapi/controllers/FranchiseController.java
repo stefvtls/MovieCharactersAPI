@@ -59,6 +59,11 @@ public class FranchiseController {
         URI location = URI.create("franchises/" + created.getId());
         return ResponseEntity.created(location).build();
     }
+    @DeleteMapping
+    public ResponseEntity deleteEntity(@RequestBody Franchise franchise) {
+        franchiseService.delete(franchise);
+        return ResponseEntity.noContent().build();
+    }
 
 
     @GetMapping("/{id}")
@@ -105,6 +110,8 @@ public class FranchiseController {
             )}
     )
     public ResponseEntity update(@PathVariable int id, @RequestBody Franchise franchise) {
+        if(id != franchise.getId())
+            return ResponseEntity.badRequest().build();
         franchiseService.update(franchise);
         return ResponseEntity.noContent().build();
     }
@@ -129,7 +136,7 @@ public class FranchiseController {
 
 
     @GetMapping("/{id}/characters")
-    public ResponseEntity<Set<Character>> getAllCharacatersForFranchise(@PathVariable int id) {
+    public ResponseEntity<Set<Character>> getAllCharactersForFranchise(@PathVariable int id) {
         return ResponseEntity.ok(franchiseService.getAllCharactersInFranchise(id));
     }
 
