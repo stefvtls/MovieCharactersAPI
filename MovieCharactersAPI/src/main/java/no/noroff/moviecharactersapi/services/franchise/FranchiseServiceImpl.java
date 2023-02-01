@@ -62,11 +62,6 @@ public class FranchiseServiceImpl implements FranchiseService {
             franchiseRepository.delete(franchise);
     }
 
-    @Override
-    public void delete(Franchise entity) {
-        deleteById(entity.getId());
-    }
-
 
     @Override
     public Set<Movie> getAllMoviesInFranchise(int franchiseId) {

@@ -39,21 +39,21 @@ public class Movie {
     @JoinColumn
     private Franchise franchise;
 
-    @JsonGetter("franchise")
-    public Integer franchiseGetter() {
-        if(franchise == null)
-            return null;
-        return franchise.getId();
-    }
+//    @JsonGetter("franchise")
+//    public Integer franchiseGetter() {
+//        if(franchise == null)
+//            return null;
+//        return franchise.getId();
+//    }
 
 
     @ManyToMany
     private Set<Character> characters;
 
-    @JsonGetter("characters")
-    public List<Integer> charactersGetter() {
-        if(characters == null)
-            return null;
-        return characters.stream().map(c -> c.getId()).collect(Collectors.toList());
-    }
+//    @JsonGetter("characters")
+//    public List<Integer> charactersGetter() {
+//        if(characters == null)
+//            return null;
+//        return characters.stream().map(c -> c.getId()).collect(Collectors.toList());
+//    }
 }
