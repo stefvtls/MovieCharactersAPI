@@ -59,11 +59,11 @@ public class FranchiseController {
         URI location = URI.create("franchises/" + created.getId());
         return ResponseEntity.created(location).build();
     }
-    @DeleteMapping
-    public ResponseEntity deleteEntity(@RequestBody Franchise franchise) {
-        franchiseService.delete(franchise);
-        return ResponseEntity.noContent().build();
-    }
+//    @DeleteMapping
+//    public ResponseEntity deleteEntity(@RequestBody Franchise franchise) {
+//        franchiseService.delete(franchise);
+//        return ResponseEntity.noContent().build();
+//    }
 
 
     @GetMapping("/{id}")

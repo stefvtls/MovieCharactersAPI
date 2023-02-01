@@ -42,11 +42,11 @@ public class CharacterController {
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping // DELETE: localhost:8080/api/v1/characters
-    public ResponseEntity delete(@RequestBody Character character) {
-        characterService.deleteById(character.getId());
-        return ResponseEntity.noContent().build();
-    }
+//    @DeleteMapping // DELETE: localhost:8080/api/v1/characters
+//    public ResponseEntity delete(@RequestBody Character character) {
+//        characterService.deleteById(character.getId());
+//        return ResponseEntity.noContent().build();
+//    }
 
     @DeleteMapping("{id}") // DELETE: localhost:8080/api/v1/characters/1
     public ResponseEntity deleteById(@PathVariable int id) {

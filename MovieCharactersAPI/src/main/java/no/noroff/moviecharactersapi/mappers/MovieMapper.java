@@ -17,7 +17,7 @@ public interface MovieMapper {
     Movie moviePostDtoToMovie(MoviePostDTO moviePostDto);
     Movie moviePutDtoToMovie(MoviePutDTO moviePutDto);
 
-    Movie movieDeleteDtoToMovie(MovieDeleteDTO movieDeleteDTO);
+//    Movie movieDeleteDtoToMovie(MovieDeleteDTO movieDeleteDTO);
 
     @Mapping(target = "franchise", source = "franchise.id")
     @Mapping(target = "characters", qualifiedByName = "charactersToCharactersId")

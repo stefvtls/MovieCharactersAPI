@@ -83,10 +83,10 @@ public class MovieServiceImpl implements MovieService {
             movieRepository.delete(mov);
     }
 
-
-    @Override
-    public void delete(Movie entity) {
-        int movieId = entity.getId();
-        deleteById(movieId);
-    }
+//
+//    @Override
+//    public void delete(Movie entity) {
+//        int movieId = entity.getId();
+//        deleteById(movieId);
+//    }
 }

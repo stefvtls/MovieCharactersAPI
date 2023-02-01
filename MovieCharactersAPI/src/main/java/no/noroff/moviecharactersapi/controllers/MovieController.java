@@ -143,37 +143,6 @@ public class MovieController {
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping // DELETE: localhost:8080/api/v1/movies
-    @Operation(summary = "Deletes a movie (i guess not needed?)")
-    @ApiResponses(value = {
-            @ApiResponse(
-                    responseCode = "204",
-                    description = "Success",
-                    content = @Content
-            ),
-            @ApiResponse(
-                    responseCode = "400",
-                    description = "Bad Request",
-                    content = @Content(
-                            mediaType = "application/json",
-                            schema=@Schema(implementation = ProblemDetail.class)
-                    )
-            ),
-            @ApiResponse(
-                    responseCode = "404",
-                    description = "Not Found",
-                    content = @Content(
-                            mediaType = "application/json",
-                            schema=@Schema(implementation = ProblemDetail.class)
-                    )
-            )
-    })
-    public ResponseEntity delete(@RequestBody MovieDeleteDTO movieDeleteDTO) {
-        Movie mov = movieMapper.movieDeleteDtoToMovie(movieDeleteDTO);
-        movieService.deleteById(mov.getId());
-        return ResponseEntity.noContent().build();
-    }
-
     @DeleteMapping("{id}") // DELETE: localhost:8080/api/v1/movies/1
     @Operation(summary = "Deletes a movie by ID")
     @ApiResponses(value = {
@@ -258,4 +227,35 @@ public class MovieController {
         movieService.updateCharacters(id, characterIds);
         return ResponseEntity.noContent().build();
     }
+
+//    @DeleteMapping // DELETE: localhost:8080/api/v1/movies
+//    @Operation(summary = "Deletes a movie (i guess not needed?)")
+//    @ApiResponses(value = {
+//            @ApiResponse(
+//                    responseCode = "204",
+//                    description = "Success",
+//                    content = @Content
+//            ),
+//            @ApiResponse(
+//                    responseCode = "400",
+//                    description = "Bad Request",
+//                    content = @Content(
+//                            mediaType = "application/json",
+//                            schema=@Schema(implementation = ProblemDetail.class)
+//                    )
+//            ),
+//            @ApiResponse(
+//                    responseCode = "404",
+//                    description = "Not Found",
+//                    content = @Content(
+//                            mediaType = "application/json",
+//                            schema=@Schema(implementation = ProblemDetail.class)
+//                    )
+//            )
+//    })
+//    public ResponseEntity delete(@RequestBody MovieDeleteDTO movieDeleteDTO) {
+//        Movie mov = movieMapper.movieDeleteDtoToMovie(movieDeleteDTO);
+//        movieService.deleteById(mov.getId());
+//        return ResponseEntity.noContent().build();
+//    }
 }
