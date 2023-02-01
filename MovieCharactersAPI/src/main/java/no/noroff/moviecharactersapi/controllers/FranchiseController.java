@@ -35,7 +35,7 @@ public class FranchiseController {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Success",
+                    description = "OK. Success",
                     content = {
                             @Content(mediaType = "application/json",
                                     array = @ArraySchema(schema = @Schema(implementation = Franchise.class)))
@@ -46,20 +46,52 @@ public class FranchiseController {
         return ResponseEntity.ok(franchiseService.findAll());
     }
 
+
     @PostMapping
     @Operation(summary = "add a new franchise to the database")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "201",
                     description = "Created",
-                    content = @Content)
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Bad request",
+                    content = @Content
+            )
     })
     public ResponseEntity add(@RequestBody Franchise franchise) {
         Franchise created = franchiseService.add(franchise);
         URI location = URI.create("franchises/" + created.getId());
         return ResponseEntity.created(location).build();
     }
+
+
     @DeleteMapping
+    @Operation(summary = "delete a franchise from the database")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "204",
+                    description = "No content. Success",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Bad request",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not found",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = ProblemDetail.class)
+                            )
+                    }
+            )
+
+    })
     public ResponseEntity deleteEntity(@RequestBody Franchise franchise) {
         franchiseService.delete(franchise);
         return ResponseEntity.noContent().build();
@@ -71,7 +103,7 @@ public class FranchiseController {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Success",
+                    description = "Ok. Success",
                     content = {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = Franchise.class))
@@ -90,12 +122,13 @@ public class FranchiseController {
         return ResponseEntity.ok(franchiseService.findById(id));
     }
 
+
     @PutMapping("/{id}")
     @Operation(summary = "update a franchise")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "204",
-                    description = "Success",
+                    description = "No content. Success",
                     content = @Content
             ),
             @ApiResponse(
@@ -106,17 +139,40 @@ public class FranchiseController {
             @ApiResponse(
                     responseCode = "404",
                     description = "Not Found",
-                    content = @Content
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = ProblemDetail.class)
+                            )
+                    }
             )}
     )
     public ResponseEntity update(@PathVariable int id, @RequestBody Franchise franchise) {
-        if(id != franchise.getId())
-            return ResponseEntity.badRequest().build();
+        if (id != franchise.getId()) {
+            return ResponseEntity.badRequest().build();     // going to throw 400 if id of new object and path to the object does not match
+        }
         franchiseService.update(franchise);
         return ResponseEntity.noContent().build();
     }
 
+
     @DeleteMapping("/{id}")
+    @Operation(summary = "delete a franchise with a given id")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "204",
+                    description = "No content. Success",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not found",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = ProblemDetail.class)
+                            )
+                    }
+            )
+    })
     public ResponseEntity deleteById(@PathVariable int id) {
         franchiseService.deleteById(id);
         return ResponseEntity.noContent().build();
@@ -124,11 +180,55 @@ public class FranchiseController {
 
 
     @GetMapping("/{id}/movies")
+    @Operation(summary = "get all movies for the franchise with a given id")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Ok. Success",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    array = @ArraySchema(
+                                            schema = @Schema(implementation = Movie.class)
+                                    )
+                            )
+                    }
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not found",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ProblemDetail.class)
+                    )
+            )
+    })
     public ResponseEntity<Set<Movie>> getAllMoviesForFranchise(@PathVariable int id) {
         return ResponseEntity.ok(franchiseService.getAllMoviesInFranchise(id));
     }
 
+
     @PutMapping("/{id}/movies")
+    @Operation(summary = "assign a franchise with given id to every movie from given from the array of the movie IDs")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "204",
+                    description = "No content. Success",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Bad request",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not found",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ProblemDetail.class)
+                    )
+            )
+    })
     public ResponseEntity updateMoviesInFranchise(@PathVariable int id, @RequestBody int[] moviesIds) {
         franchiseService.updateMoviesInFranchise(id, moviesIds);
         return ResponseEntity.noContent().build();
@@ -136,6 +236,26 @@ public class FranchiseController {
 
 
     @GetMapping("/{id}/characters")
+    @Operation(summary = "Get all characters which are to be found in the movies of a franchise with a given id")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "OK. Success",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    array = @ArraySchema(schema = @Schema(implementation = Character.class)))
+                    }
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not found",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ProblemDetail.class)
+                    )
+            )
+    }
+    )
     public ResponseEntity<Set<Character>> getAllCharactersForFranchise(@PathVariable int id) {
         return ResponseEntity.ok(franchiseService.getAllCharactersInFranchise(id));
     }
