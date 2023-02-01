@@ -10,10 +10,9 @@ import no.noroff.moviecharactersapi.mappers.CharacterMapper;
 import no.noroff.moviecharactersapi.mappers.MovieMapper;
 import no.noroff.moviecharactersapi.models.Character;
 import no.noroff.moviecharactersapi.models.Movie;
-import no.noroff.moviecharactersapi.models.dtos.MovieDTOs.MovieDTO;
-import no.noroff.moviecharactersapi.models.dtos.MovieDTOs.MovieDtoGetSimple;
-import no.noroff.moviecharactersapi.models.dtos.MovieDTOs.MoviePostDTO;
-import no.noroff.moviecharactersapi.models.dtos.MovieDTOs.MoviePutDTO;
+import no.noroff.moviecharactersapi.models.dtos.movieDTOs.MovieDtoGet;
+import no.noroff.moviecharactersapi.models.dtos.movieDTOs.MovieDtoPost;
+import no.noroff.moviecharactersapi.models.dtos.movieDTOs.MovieDtoPut;
 import no.noroff.moviecharactersapi.models.dtos.characterDTOs.CharacterDtoGetSimple;
 import no.noroff.moviecharactersapi.services.movie.MovieService;
 import org.springframework.http.ProblemDetail;
@@ -45,7 +44,7 @@ public class MovieController {
                     description = "Ok. Success",
                     content = {
                             @Content(mediaType = "application/json",
-                                    array = @ArraySchema(schema = @Schema(implementation = MovieDTO.class)))
+                                    array = @ArraySchema(schema = @Schema(implementation = MovieDtoGet.class)))
                     }
             ),
             @ApiResponse(responseCode = "400",
@@ -69,7 +68,7 @@ public class MovieController {
                     description = "Ok. Success",
                     content = {
                             @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = MovieDTO.class))
+                                    schema = @Schema(implementation = MovieDtoGet.class))
                     }
             ),
             @ApiResponse(responseCode = "400",
@@ -107,8 +106,8 @@ public class MovieController {
                             schema=@Schema(implementation = ProblemDetail.class)
                     ))
     })
-    public ResponseEntity add(@RequestBody MoviePostDTO moviePostDto) {
-        Movie mov = movieService.add(movieMapper.moviePostDtoToMovie(moviePostDto));
+    public ResponseEntity add(@RequestBody MovieDtoPost movieDtoPost) {
+        Movie mov = movieService.add(movieMapper.moviePostDtoToMovie(movieDtoPost));
         URI location = URI.create("movies/" + mov.getId());
         return ResponseEntity.created(location).build();
     }
@@ -140,10 +139,10 @@ public class MovieController {
     }
 
     )
-    public ResponseEntity update(@RequestBody MoviePutDTO moviePutDto, @PathVariable int id) {
-        if(id != moviePutDto.getId())
+    public ResponseEntity update(@RequestBody MovieDtoPut movieDtoPut, @PathVariable int id) {
+        if(id != movieDtoPut.getId())
             return ResponseEntity.badRequest().build();
-        movieService.update(movieMapper.moviePutDtoToMovie(moviePutDto));
+        movieService.update(movieMapper.moviePutDtoToMovie(movieDtoPut));
         return ResponseEntity.noContent().build();
     }
 

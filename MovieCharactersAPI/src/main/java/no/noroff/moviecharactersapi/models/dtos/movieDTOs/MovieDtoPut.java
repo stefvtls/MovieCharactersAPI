@@ -1,13 +1,11 @@
-package no.noroff.moviecharactersapi.models.dtos.MovieDTOs;
+package no.noroff.moviecharactersapi.models.dtos.movieDTOs;
 
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Set;
-
 @Getter
 @Setter
-public class MovieDTO {
+public class MovieDtoPut {
     private int id;
     private String title;
     private String director;
@@ -15,7 +13,4 @@ public class MovieDTO {
     private int releaseYear;
     private String moviePoster;
     private String trailer;
-    private int franchise;
-    private Set<Integer> characters;
-
 }
