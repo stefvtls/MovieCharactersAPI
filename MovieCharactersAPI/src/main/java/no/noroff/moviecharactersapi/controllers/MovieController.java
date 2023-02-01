@@ -202,7 +202,7 @@ public class MovieController {
 
     public ResponseEntity getCharacters(@PathVariable int id) {
         Collection<Character> chars = movieService.getCharacters(id);
-        return ResponseEntity.ok(characterMapper.characterToCharacterSimpleDto(chars));
+        return ResponseEntity.ok(characterMapper.characterToCharacterDtoSimple(chars));
 
     }
 

@@ -1,5 +1,7 @@
 package no.noroff.moviecharactersapi.services.character;
 
+import no.noroff.moviecharactersapi.exceptions.CharacterNotFoundException;
+import no.noroff.moviecharactersapi.exceptions.FranchiseNotFoundException;
 import no.noroff.moviecharactersapi.models.Character;
 
 import no.noroff.moviecharactersapi.models.Franchise;
@@ -13,7 +15,7 @@ import java.util.Collection;
 import java.util.Set;
 
 @Service
-public class CharacterServiceImpl implements CharacterService{
+public class CharacterServiceImpl implements CharacterService {
 
     private final Logger logger = LoggerFactory.getLogger(CharacterServiceImpl.class);
     private final CharacterRepository characterRepository;
@@ -27,7 +29,7 @@ public class CharacterServiceImpl implements CharacterService{
     @Override
 
     public Character findById(Integer characterId) {
-        return characterRepository.findById(characterId).get();
+        return characterRepository.findById(characterId).orElseThrow(() -> new CharacterNotFoundException(characterId));
     }
 
 
@@ -44,20 +46,18 @@ public class CharacterServiceImpl implements CharacterService{
 
     @Override
     public Character update(Character entity) {
+        if (!characterRepository.existsById(entity.getId())){
+            throw new CharacterNotFoundException(entity.getId());
+        }
         return characterRepository.save(entity);
     }
 
     @Override
     public void deleteById(Integer characterId) {
-        if (characterRepository.existsById(characterId)) {
-            Character character = characterRepository.findById(characterId).get();
-            character.getMovies().forEach(m-> m.getCharacters().remove(character));
-            character.getMovies().forEach(m-> movieRepository.save(m));
-            characterRepository.delete(character);
-        } else {
-            logger.warn("No character exists with ID: " + characterId);
-        }
-
+        Character character = characterRepository.findById(characterId).orElseThrow(() -> new CharacterNotFoundException(characterId));
+        character.getMovies().forEach(m -> m.getCharacters().remove(character));
+        character.getMovies().forEach(m -> movieRepository.save(m));
+        characterRepository.delete(character);
     }
 
 }
