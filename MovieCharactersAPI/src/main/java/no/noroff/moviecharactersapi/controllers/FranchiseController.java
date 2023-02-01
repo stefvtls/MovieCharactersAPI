@@ -54,6 +54,14 @@ public class FranchiseController {
                             @Content(mediaType = "application/json",
                                     array = @ArraySchema(schema = @Schema(implementation = FranchiseDtoGet.class)))
                     }
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Bad Request",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ProblemDetail.class)
+                    )
             )
     })
     public ResponseEntity<Collection<FranchiseDtoGet>> getAll() {
@@ -71,8 +79,11 @@ public class FranchiseController {
             ),
             @ApiResponse(
                     responseCode = "400",
-                    description = "Bad request",
-                    content = @Content
+                    description = "Bad Request",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ProblemDetail.class)
+                    )
             )
     })
     public ResponseEntity add(@RequestBody FranchiseDtoPost franchise) {
@@ -80,7 +91,6 @@ public class FranchiseController {
         URI location = URI.create("franchises/" + created.getId());
         return ResponseEntity.created(location).build();
     }
-
 
 
     @GetMapping("/{id}")
@@ -101,6 +111,14 @@ public class FranchiseController {
                             @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = ProblemDetail.class))
                     }
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Bad Request",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ProblemDetail.class)
+                    )
             )
     })
     public ResponseEntity<FranchiseDtoGet> getById(@PathVariable int id) {
@@ -118,8 +136,11 @@ public class FranchiseController {
             ),
             @ApiResponse(
                     responseCode = "400",
-                    description = "Bad request",
-                    content = @Content
+                    description = "Bad Request",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ProblemDetail.class)
+                    )
             ),
             @ApiResponse(
                     responseCode = "404",
@@ -147,6 +168,14 @@ public class FranchiseController {
                     responseCode = "204",
                     description = "No content. Success",
                     content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Bad Request",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ProblemDetail.class)
+                    )
             ),
             @ApiResponse(
                     responseCode = "404",
@@ -179,6 +208,14 @@ public class FranchiseController {
                     }
             ),
             @ApiResponse(
+                    responseCode = "400",
+                    description = "Bad Request",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ProblemDetail.class)
+                    )
+            ),
+            @ApiResponse(
                     responseCode = "404",
                     description = "Not found",
                     content = @Content(
@@ -202,8 +239,11 @@ public class FranchiseController {
             ),
             @ApiResponse(
                     responseCode = "400",
-                    description = "Bad request",
-                    content = @Content
+                    description = "Bad Request",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ProblemDetail.class)
+                    )
             ),
             @ApiResponse(
                     responseCode = "404",
@@ -230,6 +270,14 @@ public class FranchiseController {
                             @Content(mediaType = "application/json",
                                     array = @ArraySchema(schema = @Schema(implementation = CharacterDtoGetSimple.class)))
                     }
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Bad Request",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ProblemDetail.class)
+                    )
             ),
             @ApiResponse(
                     responseCode = "404",
