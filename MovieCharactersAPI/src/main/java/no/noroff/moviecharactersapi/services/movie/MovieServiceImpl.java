@@ -1,6 +1,10 @@
 package no.noroff.moviecharactersapi.services.movie;
 
 
+import no.noroff.moviecharactersapi.exceptions.CharacterNotFoundException;
+import no.noroff.moviecharactersapi.exceptions.FranchiseNotFoundException;
+import no.noroff.moviecharactersapi.exceptions.MovieNotFoundException;
+
 import no.noroff.moviecharactersapi.models.Character;
 import no.noroff.moviecharactersapi.models.Franchise;
 import no.noroff.moviecharactersapi.models.Movie;
@@ -28,21 +32,21 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public Franchise getFranchise(int movieId) {
-        return movieRepository.findById(movieId).get().getFranchise();
+        return movieRepository.findById(movieId).orElseThrow(() -> new MovieNotFoundException(movieId)).getFranchise();
     }
 
     @Override
     public Collection<Character> getCharacters(int movieId) {
-        return movieRepository.findById(movieId).get().getCharacters();
+        return movieRepository.findById(movieId).orElseThrow(() -> new MovieNotFoundException(movieId)).getCharacters();
     }
 
     @Override
     public void updateCharacters(int movieId, int[] characters) {
-        Movie movie = movieRepository.findById(movieId).get();
+        Movie movie = movieRepository.findById(movieId).orElseThrow(() -> new MovieNotFoundException(movieId));
         Set<Character> characterList = new HashSet<>();
 
         for (int id: characters) {
-            characterList.add(characterRepository.findById(id).get());
+            characterList.add(characterRepository.findById(id).orElseThrow(() -> new CharacterNotFoundException(id)));
         }
         movie.setCharacters(characterList);
         movieRepository.save(movie);
@@ -51,7 +55,8 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public Movie findById(Integer id) {
-        return movieRepository.findById(id).orElseThrow();
+
+        return movieRepository.findById(id).orElseThrow(() -> new MovieNotFoundException(id));
     }
 
 
@@ -67,17 +72,16 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public Movie update(Movie entity) {
+        if (!movieRepository.existsById(entity.getId())){
+            throw new MovieNotFoundException(entity.getId());
+        }
         return movieRepository.save(entity);
     }
 
     @Override
     public void deleteById(Integer movieId) {
-        if(movieRepository.existsById(movieId)) {
-            Movie mov = movieRepository.findById(movieId).get();
+            Movie mov = movieRepository.findById(movieId).orElseThrow(() -> new MovieNotFoundException(movieId));
             movieRepository.delete(mov);
-        }
-        else
-            logger.warn("No movie exists with ID: " + movieId);
     }
 
 }

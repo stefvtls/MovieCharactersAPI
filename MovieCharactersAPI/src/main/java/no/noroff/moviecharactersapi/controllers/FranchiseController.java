@@ -83,7 +83,6 @@ public class FranchiseController {
 
 
 
-
     @GetMapping("/{id}")
     @Operation(summary = "get franchise with a given id")
     @ApiResponses(value = {
