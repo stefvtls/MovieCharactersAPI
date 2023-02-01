@@ -36,12 +36,12 @@ public class Character {
 
     @ManyToMany(mappedBy="characters")
     private Set<Movie> movies;
-    @JsonGetter("movies")
-    public List<Integer> moviesGetter() {
-        if(movies == null)
-            return null;
-        return movies.stream().map(m -> m.getId()).collect(Collectors.toList());
-    }
+//    @JsonGetter("movies")
+//    public List<Integer> moviesGetter() {
+//        if(movies == null)
+//            return null;
+//        return movies.stream().map(m -> m.getId()).collect(Collectors.toList());
+//    }
 
 
 
