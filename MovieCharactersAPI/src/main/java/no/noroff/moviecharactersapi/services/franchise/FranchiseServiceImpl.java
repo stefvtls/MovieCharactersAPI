@@ -1,5 +1,7 @@
 package no.noroff.moviecharactersapi.services.franchise;
 
+import no.noroff.moviecharactersapi.exceptions.FranchiseNotFoundException;
+import no.noroff.moviecharactersapi.exceptions.MovieNotFoundException;
 import no.noroff.moviecharactersapi.models.Franchise;
 import no.noroff.moviecharactersapi.models.Movie;
 import no.noroff.moviecharactersapi.models.Character;
@@ -28,7 +30,7 @@ public class FranchiseServiceImpl implements FranchiseService {
 
     @Override
     public Franchise findById(Integer franchiseId) {
-        return franchiseRepository.findById(franchiseId).get();
+        return franchiseRepository.findById(franchiseId).orElseThrow(() -> new FranchiseNotFoundException(franchiseId));
     }
 
     @Override
@@ -51,14 +53,10 @@ public class FranchiseServiceImpl implements FranchiseService {
 
     @Override
     public void deleteById(Integer franchiseId) {
-        if (franchiseRepository.existsById(franchiseId)) {
-            Franchise franchise = franchiseRepository.findById(franchiseId).get();
+            Franchise franchise = franchiseRepository.findById(franchiseId).orElseThrow(() -> new FranchiseNotFoundException(franchiseId));
             franchise.getMovies().forEach(m -> m.setFranchise(null));
             franchise.getMovies().forEach(m -> movieRepository.save(m));
             franchiseRepository.delete(franchise);
-        }
-        else
-            logger.warn("No franchise exists with ID: " + franchiseId);
     }
 
     @Override
@@ -69,13 +67,13 @@ public class FranchiseServiceImpl implements FranchiseService {
 
     @Override
     public Set<Movie> getAllMoviesInFranchise(int franchiseId) {
-        return franchiseRepository.findById(franchiseId).get().getMovies();
+        return franchiseRepository.findById(franchiseId).orElseThrow(() -> new FranchiseNotFoundException(franchiseId)).getMovies();
     }
 
     @Override
     public Set<Character> getAllCharactersInFranchise(int franchiseId) {
         Set<Character> charactersInFranchise = new HashSet<>();
-        for (Movie m : franchiseRepository.findById(franchiseId).get().getMovies()) {
+        for (Movie m : franchiseRepository.findById(franchiseId).orElseThrow(() -> new FranchiseNotFoundException(franchiseId)).getMovies()) {
             for (Character character : m.getCharacters()) {
                 charactersInFranchise.add(character);
             }
@@ -87,9 +85,9 @@ public class FranchiseServiceImpl implements FranchiseService {
 
     @Override
     public void updateMoviesInFranchise(int franchiseId, int[] moviesIds) {
-        Franchise franchise = franchiseRepository.findById(franchiseId).get();
+        Franchise franchise = franchiseRepository.findById(franchiseId).orElseThrow(() -> new FranchiseNotFoundException(franchiseId));
         for (int movieId : moviesIds) {
-            Movie movieToUpdate = movieRepository.findById(movieId).get();
+            Movie movieToUpdate = movieRepository.findById(movieId).orElseThrow(() -> new MovieNotFoundException(movieId));
             movieToUpdate.setFranchise(franchise);
             movieRepository.save(movieToUpdate);
         }
