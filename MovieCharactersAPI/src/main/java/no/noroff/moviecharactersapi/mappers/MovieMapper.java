@@ -39,6 +39,7 @@ public interface MovieMapper {
     }
 
     MovieDtoGetSimple movieToMovieDtoSimple(Movie movie);
+    Collection<MovieDtoGetSimple> movieToMovieDtoSimple(Collection<Movie> movies);
 
 
 }

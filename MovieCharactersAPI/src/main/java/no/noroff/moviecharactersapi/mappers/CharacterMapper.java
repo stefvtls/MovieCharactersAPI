@@ -18,5 +18,6 @@ public interface CharacterMapper {
 
 
     CharacterDtoGetSimple characterToCharacterDtoSimple(Character character);
+    Collection<CharacterDtoGetSimple>  characterToCharacterDtoSimple(Collection<Character> characters);
 
 }
