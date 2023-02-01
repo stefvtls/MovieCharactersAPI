@@ -7,6 +7,8 @@ import no.noroff.moviecharactersapi.models.dtos.characterDTOs.CharacterDtoGetSim
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.Collection;
+
 
 @Mapper(componentModel = "spring")
 public interface CharacterMapper {
