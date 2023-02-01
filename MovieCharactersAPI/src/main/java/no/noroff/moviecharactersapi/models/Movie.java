@@ -27,7 +27,8 @@ public class Movie {
 
     private int releaseYear;
 
-    @Column(length = 50, nullable = false)
+    //@Column(length = 50, nullable = false)
+    @Column(length = 50)
     private String director;
 
     private String moviePoster;

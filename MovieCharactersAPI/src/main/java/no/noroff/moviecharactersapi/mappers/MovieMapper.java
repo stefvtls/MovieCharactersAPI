@@ -2,8 +2,7 @@ package no.noroff.moviecharactersapi.mappers;
 
 import no.noroff.moviecharactersapi.models.Character;
 import no.noroff.moviecharactersapi.models.Movie;
-import no.noroff.moviecharactersapi.models.dto.movie.MovieDTO;
-import no.noroff.moviecharactersapi.models.dto.movie.MovieSimpleDTO;
+import no.noroff.moviecharactersapi.models.dto.movie.*;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
@@ -14,7 +13,11 @@ import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring")
 public interface MovieMapper {
-    MovieSimpleDTO movieToMovieSimpleDto(Movie movie);
+
+    Movie moviePostDtoToMovie(MoviePostDTO moviePostDto);
+    Movie moviePutDtoToMovie(MoviePutDTO moviePutDto);
+
+    Movie movieDeleteDtoToMovie(MovieDeleteDTO movieDeleteDTO);
 
     @Mapping(target = "franchise", source = "franchise.id")
     @Mapping(target = "characters", qualifiedByName = "charactersToCharactersId")
@@ -28,4 +31,6 @@ public interface MovieMapper {
             return null;
         return value.stream().map(c -> c.getId()).collect(Collectors.toSet());
     }
+
+
 }
