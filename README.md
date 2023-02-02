@@ -30,9 +30,9 @@ Spring Web has been used to create a RESTful Web API which is able to acces and 
   <li> Return all characters in a franchise by supplying a franchise id in the path</li>
 </ol>
 
-With GET and POST requests, rather than showing or supplying the related data as enities, DTOs are used which facilitates these requests by only requiring a relevant id.
+With GET and POST requests, rather than showing or supplying the related data as enities, DTOs are used which facilitates these requests by only requiring and returning a relevant id.
 
-Documentation for this project has been created using Swagger / Open API.
+Documentation for this API has been done through Swagger / Open API and could be used to support the user in operating the API.
 
 
 ## Getting Started
@@ -75,6 +75,8 @@ If you want to test the API, you should run the the project as described in the 
 • IntelliJ IDEA with JDK 17.
 
 • SpringBoot
+
+• Spring JPA
 
 • Spring Web
 
