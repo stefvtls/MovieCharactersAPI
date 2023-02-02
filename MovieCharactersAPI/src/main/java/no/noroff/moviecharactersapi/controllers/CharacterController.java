@@ -32,6 +32,11 @@ public class CharacterController {
         this.characterMapper = characterMapper;
     }
 
+    /**
+     * Handles GET requests at the URL: localhost:8080/api/v1/characters
+     * Retrieves a collection of characters of type CharacterDtoGet from the database.
+     * @return a ResponseEntity with the HTTP status 200 (OK) if the retrieval is successful, or with a problem detail, HTTP status 400 (Bad Request).
+     */
     @GetMapping // GET: localhost:8080/api/v1/characters
     @Operation(summary = "Get all characters")
     @ApiResponses(value = {
@@ -61,6 +66,13 @@ public class CharacterController {
     }
 
 
+    /**
+     * Listens for GET requests at the URL: localhost:8080/api/v1/characters{id}
+     * Retrieves a character from the database based on its id.
+     * @param id of type int - the id of the character to retrieve.
+     * @return a ResponseEntity with the HTTP status 200 (OK) if the character is successfully retrieved,
+     * with the HTTP status 404 (Not Found) if the character with the specified id is not found, or with the HTTP status 400 (Bad Request).
+     */
     @GetMapping("{id}") // GET: localhost:8080/api/v1/characters/1
     @Operation(summary = "Get a character with given id")
     @ApiResponses(value = {
@@ -97,7 +109,12 @@ public class CharacterController {
     }
 
 
-
+    /**
+     * Handles POST requests at the URL: localhost:8080/api/v1/characters
+     * Adds a new character to the database.
+     * @param character of type CharacterDtoPost - the character to add.
+     * @return a ResponseEntity with the HTTP status 201 (Created) if the character is successfully added, or with a problem detail, HTTP status 400 (Bad Request).
+     */
     @PostMapping // POST: localhost:8080/api/v1/characters
     @Operation(summary = "Add a character to the database")
     @ApiResponses(value = {
@@ -129,6 +146,15 @@ public class CharacterController {
         return ResponseEntity.created(location).build();
     }
 
+
+    /**
+     Listens for PUT requests at the URL: localhost:8080/api/v1/characters/{id}
+     Updates a character in the database based on its id.
+     @param character of type CharacterDtoPut - the character to update.
+     @param id of type int - the id of the character to update.
+     @return a ResponseEntity with the HTTP status 204 (No Content) if the character is successfully updated,
+     with the HTTP status 404 (Not Found) if the character with the specified id is not found, or with the HTTP status 400 (Bad Request).
+     */
     @PutMapping("{id}") // PUT: localhost:8080/api/v1/characters/1
     @Operation(summary = "Update a character")
     @ApiResponses(value = {
@@ -160,7 +186,13 @@ public class CharacterController {
     }
 
 
-
+    /**
+     Listens for DELETE requests at the URL: localhost:8080/api/v1/characters/{id}
+     Deletes a character from the database based on its id.
+     @param id of type int - the id of the character to delete.
+     @return a ResponseEntity with the HTTP status 204 (No Content) if the character is successfully deleted,
+     or with the HTTP status 404 (Not Found) or with the HTTP status 400 (Bad Request)..
+     */
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete a character with a given id")
     @ApiResponses(value = {
