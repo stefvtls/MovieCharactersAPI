@@ -9,9 +9,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import no.noroff.moviecharactersapi.mappers.CharacterMapper;
 import no.noroff.moviecharactersapi.mappers.FranchiseMapper;
 import no.noroff.moviecharactersapi.mappers.MovieMapper;
-import no.noroff.moviecharactersapi.models.Character;
 import no.noroff.moviecharactersapi.models.Franchise;
-import no.noroff.moviecharactersapi.models.dtos.MovieDTOs.MovieDtoGetSimple;
+import no.noroff.moviecharactersapi.models.dtos.movieDTOs.MovieDtoGetSimple;
 import no.noroff.moviecharactersapi.models.dtos.characterDTOs.CharacterDtoGetSimple;
 import no.noroff.moviecharactersapi.models.dtos.franchiseDTOs.FranchiseDtoGet;
 import no.noroff.moviecharactersapi.models.dtos.franchiseDTOs.FranchiseDtoPost;
@@ -23,7 +22,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.Collection;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/api/v1/franchises")

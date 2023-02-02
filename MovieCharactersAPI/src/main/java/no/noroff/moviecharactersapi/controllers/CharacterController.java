@@ -33,7 +33,7 @@ public class CharacterController {
     }
 
     @GetMapping // GET: localhost:8080/api/v1/characters
-    @Operation(summary = "get all characters")
+    @Operation(summary = "Get all characters")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
@@ -62,7 +62,7 @@ public class CharacterController {
 
 
     @GetMapping("{id}") // GET: localhost:8080/api/v1/characters/1
-    @Operation(summary = "get a character with given id")
+    @Operation(summary = "Get a character with given id")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
@@ -99,7 +99,7 @@ public class CharacterController {
 
 
     @PostMapping // POST: localhost:8080/api/v1/characters
-    @Operation(summary = "add a character to the database")
+    @Operation(summary = "Add a character to the database")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "201",
@@ -130,7 +130,7 @@ public class CharacterController {
     }
 
     @PutMapping("{id}") // PUT: localhost:8080/api/v1/characters/1
-    @Operation(summary = "update a character")
+    @Operation(summary = "Update a character")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "204",
@@ -160,8 +160,33 @@ public class CharacterController {
     }
 
 
-    
-    @DeleteMapping("{id}") // DELETE: localhost:8080/api/v1/characters/1
+
+    @DeleteMapping("/{id}")
+    @Operation(summary = "Delete a character with a given id")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "204",
+                    description = "No content. Success",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Bad Request",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ProblemDetail.class)
+                    )
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not found",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = ProblemDetail.class)
+                            )
+                    }
+            )
+    })
     public ResponseEntity deleteById(@PathVariable int id) {
         characterService.deleteById(id);
         return ResponseEntity.noContent().build();
