@@ -4,29 +4,43 @@ INSERT INTO franchise ("name") VALUES ('Ghostbusters');
 
 
 -- Movies
-INSERT INTO movie ("title", "director", "release_year", "franchise_id") VALUES
-    ('The Lord of the Rings: The Fellowship of the Ring','Peter Jackson', 2001, 1);
-INSERT INTO movie ("title", "director", "release_year", "franchise_id") VALUES
-                ('The Lord of the Rings: The Two Towers','Peter Jackson', 2002, 1);
-INSERT INTO movie ("title", "director", "release_year", "franchise_id") VALUES
-    ('The Lord of the Rings: The Return of the King','Peter Jackson', 2003, 1);
+INSERT INTO movie ("title", "director", "genre", "release_year", "movie_poster", "trailer", "franchise_id") VALUES
+    ('The Lord of the Rings: The Fellowship of the Ring','Peter Jackson', 'Action/Adventure/Drama', 2001, 'shorturl.at/inxTX',
+     'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 1);
 
-INSERT INTO movie ("title", "director", "release_year", "franchise_id") VALUES
-    ('Ghostbusters','Ivan Reitman', 1984, 2);
-INSERT INTO movie ("title", "director", "release_year", "franchise_id") VALUES
-    ('Ghostbusters II','Ivan Reitman', 1989, 2);
-INSERT INTO movie ("title", "director", "release_year", "franchise_id") VALUES
-    ('Ghostbusters: Answer the Call','Paul Feig', 2016, 2);
+INSERT INTO movie ("title", "director", "genre", "release_year", "movie_poster", "trailer", "franchise_id") VALUES
+                ('The Lord of the Rings: The Two Towers','Peter Jackson', 'Action/Adventure/Drama', 2002, 'shorturl.at/inxTX',
+                 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 1);
+
+INSERT INTO movie ("title", "director", "genre", "release_year", "movie_poster", "trailer", "franchise_id") VALUES
+    ('The Lord of the Rings: The Return of the King','Peter Jackson', 'Action/Adventure/Drama', 2003, 'shorturl.at/inxTX',
+     'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 1);
+
+INSERT INTO movie ("title", "director", "genre", "release_year", "movie_poster", "trailer", "franchise_id") VALUES
+    ('Ghostbusters','Ivan Reitman', 'Action/Comedy/Fantasy', 1984, 'shorturl.at/inxTX',
+     'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 2);
+INSERT INTO movie ("title", "director", "genre", "release_year", "movie_poster", "trailer", "franchise_id") VALUES
+    ('Ghostbusters II','Ivan Reitman', 'Action/Comedy/Fantasy', 1989, 'shorturl.at/inxTX',
+     'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 2);
+INSERT INTO movie ("title", "director", "genre", "release_year", "movie_poster", "trailer", "franchise_id") VALUES
+    ('Ghostbusters: Answer the Call','Paul Feig', 'Action/Comedy/Fantasy', 2016, 'shorturl.at/inxTX',
+     'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 2);
 
 
 -- Characters
-INSERT INTO character ("name") VALUES ('Frodo Baggins');
-INSERT INTO character ("name") VALUES ('Gandalf');
-INSERT INTO character ("name") VALUES ('Aragorn');
+INSERT INTO character ("name", "alias", "gender", "picture") VALUES ('Frodo Baggins', 'The Ring Bearer', 'Male',
+                                                                     'shorturl.at/inxTX');
+INSERT INTO character ("name", "alias", "gender", "picture") VALUES ('Gandalf', 'Gandalf the Grey', 'Male',
+                                                                     'shorturl.at/inxTX');
+INSERT INTO character ("name", "alias", "gender", "picture") VALUES ('Aragorn', 'Son of Arathorn', 'Male',
+                                                                     'shorturl.at/inxTX');
 
-INSERT INTO character ("name") VALUES ('Dr. Peter Venkman');
-INSERT INTO character ("name") VALUES ('Dr. Raymond Stantz');
-INSERT INTO character ("name") VALUES ('Dr. Egon Spengler');
+INSERT INTO character ("name", "alias", "gender", "picture") VALUES ('Peter Venkman', 'Dr. Peter Venkman', 'Male',
+                                                                     'shorturl.at/inxTX');
+INSERT INTO character ("name", "alias", "gender", "picture") VALUES ('Raymond Stantz', 'Ray', 'Male',
+                                                                     'shorturl.at/inxTX');
+INSERT INTO character ("name", "alias", "gender", "picture") VALUES ('Egon Spengler', 'Dirt Farmer', 'Male',
+                                                                     'shorturl.at/inxTX');
 
 
 -- Characters in movie
