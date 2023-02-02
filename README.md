@@ -10,7 +10,7 @@ Hibernate has been used to create a PostgresSQL database which could be used to 
 
 <ol>
   <li> One movie contains many characters, and character can play in multiple movies. </li>
-  <li> One movie belongs to one franchise, but a franchise can contain multiple **movies**. </li>
+  <li> One movie belongs to one franchise, but a franchise can contain multiple movies. </li>
 </ol>
 
 There are two seperate layers in this project. The *Repositories* layers is responsible for encapsulating data access through the use of JPA repositories. The *Services* layer is responsible for encapsulating any business logic
@@ -58,11 +58,15 @@ Open the project in IntelliJ Ultimate with JDK 17.
 Before running the project, go to the file located in src/main/resources/application.properties set up the following:
 
 
-`spring.datasource.url= jdbc:postgresql://localhost:5432/<nameOfYourChinookDatabase>`
+`spring.datasource.url= jdbc:postgresql://localhost:5432/<nameOfYourMovieDatabase>`
 
 `spring.datasource.username= <DatabaseUsernameLogin>`
 
 `spring.datasource.password= <DatabasePassword>`
+
+
+## Using the API
+If you want to test the API, you should run the the project as described in the previous steps and open the [Swagger UI](http://localhost:8080/swagger-ui/index.html#/).
 
 
 
@@ -72,6 +76,9 @@ Before running the project, go to the file located in src/main/resources/applica
 
 • SpringBoot
 
+• Spring Web
+
+• Swagger / OpenAI
 
 • PostgreSQL
 
