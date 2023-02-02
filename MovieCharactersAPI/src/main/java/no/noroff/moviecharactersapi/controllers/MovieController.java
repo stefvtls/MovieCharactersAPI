@@ -27,6 +27,7 @@ import java.util.Collection;
 @RequestMapping(path = "api/v1/movies")
 public class MovieController {
 
+    
     private final MovieService movieService;
     private final MovieMapper movieMapper;
     private final CharacterMapper characterMapper;
