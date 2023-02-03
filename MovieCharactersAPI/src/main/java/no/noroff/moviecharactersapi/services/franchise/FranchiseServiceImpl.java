@@ -1,6 +1,5 @@
 package no.noroff.moviecharactersapi.services.franchise;
 
-
 import no.noroff.moviecharactersapi.exceptions.FranchiseNotFoundException;
 import no.noroff.moviecharactersapi.exceptions.MovieNotFoundException;
 import no.noroff.moviecharactersapi.models.Franchise;
@@ -8,8 +7,6 @@ import no.noroff.moviecharactersapi.models.Movie;
 import no.noroff.moviecharactersapi.models.Character;
 import no.noroff.moviecharactersapi.repositories.FranchiseRepository;
 import no.noroff.moviecharactersapi.repositories.MovieRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -19,7 +16,6 @@ import java.util.Set;
 @Service
 public class FranchiseServiceImpl implements FranchiseService {
 
-    private final Logger logger = LoggerFactory.getLogger(FranchiseServiceImpl.class);
     private final FranchiseRepository franchiseRepository;
     private final MovieRepository movieRepository;
 

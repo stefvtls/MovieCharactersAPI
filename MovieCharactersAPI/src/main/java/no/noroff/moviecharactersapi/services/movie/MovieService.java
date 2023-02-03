@@ -14,7 +14,6 @@ import java.util.Collection;
  * structures for characters within the Movie table.
  */
 public interface MovieService extends CrudService<Movie, Integer> {
-//    Franchise getFranchise(int movieId);
     Collection<Character> getCharacters(int movieId);
     void updateCharacters(int movieId, int[] characters);
 
