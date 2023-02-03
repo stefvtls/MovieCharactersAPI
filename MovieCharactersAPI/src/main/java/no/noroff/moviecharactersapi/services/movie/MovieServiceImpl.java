@@ -2,7 +2,6 @@ package no.noroff.moviecharactersapi.services.movie;
 
 
 import no.noroff.moviecharactersapi.exceptions.CharacterNotFoundException;
-import no.noroff.moviecharactersapi.exceptions.FranchiseNotFoundException;
 import no.noroff.moviecharactersapi.exceptions.MovieNotFoundException;
 
 import no.noroff.moviecharactersapi.models.Character;
@@ -10,8 +9,6 @@ import no.noroff.moviecharactersapi.models.Franchise;
 import no.noroff.moviecharactersapi.models.Movie;
 import no.noroff.moviecharactersapi.repositories.CharacterRepository;
 import no.noroff.moviecharactersapi.repositories.MovieRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -20,7 +17,6 @@ import java.util.Set;
 
 @Service
 public class MovieServiceImpl implements MovieService {
-    private final Logger logger = LoggerFactory.getLogger(MovieServiceImpl.class);
     private final MovieRepository movieRepository;
     private final CharacterRepository characterRepository;
 
@@ -28,17 +24,6 @@ public class MovieServiceImpl implements MovieService {
         this.movieRepository = movieRepository;
         this.characterRepository = characterRepository;
     }
-
-//     /**
-//     * This method retrieves the Franchise entity for a movie with the specified id.
-//     * @param movieId The id of the movie for which the Franchise is to be retrieved.
-//     * @return The Franchise object associated with the movie.
-//     * @throws MovieNotFoundException if the movie with the specified id does not exist in the database.
-//      */
-//    @Override
-//    public Franchise getFranchise(int movieId) {
-//        return movieRepository.findById(movieId).orElseThrow(() -> new MovieNotFoundException(movieId)).getFranchise();
-//    }
 
     /**
      * Returns the collection of characters in a movie specified by the movieId.

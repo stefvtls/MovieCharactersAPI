@@ -11,7 +11,6 @@ import no.noroff.moviecharactersapi.mappers.MovieMapper;
 import no.noroff.moviecharactersapi.models.Character;
 import no.noroff.moviecharactersapi.models.Movie;
 import no.noroff.moviecharactersapi.models.dtos.movieDTOs.MovieDtoGet;
-import no.noroff.moviecharactersapi.models.dtos.movieDTOs.MovieDtoGetSimple;
 import no.noroff.moviecharactersapi.models.dtos.movieDTOs.MovieDtoPost;
 import no.noroff.moviecharactersapi.models.dtos.movieDTOs.MovieDtoPut;
 import no.noroff.moviecharactersapi.models.dtos.characterDTOs.CharacterDtoGetSimple;
