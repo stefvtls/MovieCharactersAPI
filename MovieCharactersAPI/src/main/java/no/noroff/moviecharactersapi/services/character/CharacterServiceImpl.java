@@ -2,7 +2,6 @@ package no.noroff.moviecharactersapi.services.character;
 
 import no.noroff.moviecharactersapi.exceptions.CharacterNotFoundException;
 import no.noroff.moviecharactersapi.models.Character;
-
 import no.noroff.moviecharactersapi.repositories.CharacterRepository;
 import no.noroff.moviecharactersapi.repositories.MovieRepository;
 import org.slf4j.Logger;
@@ -10,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+
 
 @Service
 public class CharacterServiceImpl implements CharacterService {

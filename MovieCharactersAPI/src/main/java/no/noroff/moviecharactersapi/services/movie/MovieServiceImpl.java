@@ -3,9 +3,7 @@ package no.noroff.moviecharactersapi.services.movie;
 
 import no.noroff.moviecharactersapi.exceptions.CharacterNotFoundException;
 import no.noroff.moviecharactersapi.exceptions.MovieNotFoundException;
-
 import no.noroff.moviecharactersapi.models.Character;
-import no.noroff.moviecharactersapi.models.Franchise;
 import no.noroff.moviecharactersapi.models.Movie;
 import no.noroff.moviecharactersapi.repositories.CharacterRepository;
 import no.noroff.moviecharactersapi.repositories.MovieRepository;
