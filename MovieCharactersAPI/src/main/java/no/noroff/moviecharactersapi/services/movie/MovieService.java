@@ -3,10 +3,8 @@ package no.noroff.moviecharactersapi.services.movie;
 
 
 import no.noroff.moviecharactersapi.models.Character;
-import no.noroff.moviecharactersapi.models.Franchise;
 import no.noroff.moviecharactersapi.models.Movie;
 import no.noroff.moviecharactersapi.services.CrudService;
-import no.noroff.moviecharactersapi.services.franchise.FranchiseServiceImpl;
 
 import java.util.Collection;
 

@@ -1,6 +1,6 @@
 package no.noroff.moviecharactersapi.models.dtos.franchiseDTOs;
 
-import jakarta.persistence.*;
+
 import lombok.Data;
 import no.noroff.moviecharactersapi.models.Franchise;
 
