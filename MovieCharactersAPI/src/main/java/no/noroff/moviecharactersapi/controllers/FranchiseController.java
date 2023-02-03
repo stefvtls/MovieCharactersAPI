@@ -46,7 +46,7 @@ public class FranchiseController {
      * @return a ResponseEntity with the HTTP status 200 (OK) if the retrieval is successful, or with a problem detail, HTTP status 400 (Bad Request).
      */
     @GetMapping
-    @Operation(summary = "get all franchises")
+    @Operation(summary = "Get all franchises")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
@@ -76,7 +76,7 @@ public class FranchiseController {
      * @return a ResponseEntity with the HTTP status 201 (Created) if the franchise is successfully added, or with a problem detail, HTTP status 400 (Bad Request).
      */
     @PostMapping
-    @Operation(summary = "add a new franchise to the database")
+    @Operation(summary = "Add a new franchise to the database")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "201",
@@ -106,7 +106,7 @@ public class FranchiseController {
      * with the HTTP status 404 (Not Found) if the franchise with the specified id is not found, or with the HTTP status 400 (Bad Request).
      */
     @GetMapping("/{id}")
-    @Operation(summary = "get franchise with a given id")
+    @Operation(summary = "Get franchise with a given id")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
@@ -146,7 +146,7 @@ public class FranchiseController {
      * or with a problem detail, HTTP status 400 (Bad Request) if the id of the path does not match the id of the franchise, or HTTP status 404 (Not Found).
      */
     @PutMapping("/{id}")
-    @Operation(summary = "update a franchise")
+    @Operation(summary = "Update a franchise")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "204",
@@ -192,7 +192,7 @@ public class FranchiseController {
      * error details in case the franchise with the given id does not exist.
      */
     @DeleteMapping("/{id}")
-    @Operation(summary = "delete a franchise with a given id")
+    @Operation(summary = "Delete a franchise with a given id")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "204",
@@ -235,7 +235,7 @@ public class FranchiseController {
      error details in case the franchise with the given id does not exist.
      */
     @GetMapping("/{id}/movies")
-    @Operation(summary = "get all movies for the franchise with a given id")
+    @Operation(summary = "Get all movies for the franchise with a given id")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
@@ -283,7 +283,7 @@ public class FranchiseController {
      error details in case the franchise with the given id does not exist.
      */
     @PutMapping("/{id}/movies")
-    @Operation(summary = "assign movies to a franchise - assign a franchise with given id to every movie from given from the array of the movie IDs")
+    @Operation(summary = "Assign movies to a franchise - assign a franchise with given id to every movie from given from the array of the movie IDs")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "204",
